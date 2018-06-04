@@ -9,7 +9,7 @@ const Display = props => {
     return(
         <div className='display'>
             <p>{display}</p>
-            <button onClick={this.props.reset} >Reset</button>
+            <button onClick={props.reset} >Reset</button>
             {props.startClicked && <button onClick={resumePause} >{props.pauseResume}</button>}
             {!props.startClicked && <button onClick={props.start}>Start</button>}
         </div>
