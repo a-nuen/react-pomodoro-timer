@@ -16,25 +16,18 @@ class App extends Component {
       workBreak: 'Work'
     }
     this.count;
-    this.breakAddMinute = this.breakAddMinute.bind(this);
-    this.breakMinusMinute = this.breakMinusMinute.bind(this);
-    this.timerAddMinute = this.timerAddMinute.bind(this);
-    this.timerMinusMinute = this.timerMinusMinute.bind(this);
-    this.countDown = this.countDown.bind(this);
-    this.start = this.start.bind(this);
-    this.reset = this.reset.bind(this);
-    this.pause = this.pause.bind(this);
-    this.resume = this.resume.bind(this);
   }
 
-  start() {
+  start = () => {
     this.countDown(this.state.timer);
-    this.setState({pauseResume: 'Pause'})
-    this.setState({startClicked: true})
-    this.setState({workBreak: 'Work'})
+    this.setState({
+      pauseResume: 'Pause',
+      startClicked: true,
+      workBreak: 'Work'
+    })
   }
 
-  countDown(seconds) {
+  countDown = (seconds) => {
     let then = Date.now() + seconds * 1000;
     this.count = setInterval(() => {
       let secsLeft = Math.round((then - Date.now()) /1000);
@@ -56,29 +49,29 @@ class App extends Component {
     }, 1000)
   }
 
-  reset() {
+  reset = () => {
     clearInterval(this.count);
     this.setState({display: this.state.timer})
     this.setState({startClicked: false})
   }
 
-  pause() {
+  pause = () => {
     clearInterval(this.count);
     this.setState({pauseResume: 'Resume'})
   }
 
-  resume() {
+  resume = () => {
     this.countDown(this.state.display);
     this.setState({pauseResume: 'Pause'})
   }
 
-  breakAddMinute() {
+  breakAddMinute = () => {
     this.setState({
       break: this.state.break + 60
     })
   }
 
-  breakMinusMinute() {
+  breakMinusMinute = () => {
     if(this.state.break > 60) {
       this.setState({
         break: this.state.break - 60
@@ -86,13 +79,13 @@ class App extends Component {
     }
   }
 
-  timerAddMinute() { 
+  timerAddMinute = () => { 
     this.setState({
       timer: this.state.timer + 60
     })
   }
 
-  timerMinusMinute() {
+  timerMinusMinute = () => {
     if(this.state.timer > 60) {
       this.setState({
       timer: this.state.timer - 60
