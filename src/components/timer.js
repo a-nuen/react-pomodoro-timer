@@ -11,5 +11,4 @@ const Timer = props => (
 	</div>
 )
 
-
 export default Timer;
